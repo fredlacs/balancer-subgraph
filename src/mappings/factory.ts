@@ -30,17 +30,17 @@ export function handleNewPool(event: LOG_NEW_POOL): void {
   }
 
   let pool = new Pool(event.params.pool.toHexString())
-  pool.crp = isCrp(event.params.caller)
-  pool.rights = []
-  if (pool.crp) {
-    factory.crpCount += 1
-    let crp = ConfigurableRightsPool.bind(event.params.caller)
-    pool.symbol = getCrpSymbol(crp)
-    pool.name = getCrpName(crp)
-    pool.crpController = Address.fromString(getCrpController(crp))
-    pool.rights = getCrpRights(crp)
-    pool.cap = getCrpCap(crp)
-  }
+  // pool.crp = isCrp(event.params.caller)
+  // pool.rights = []
+  // if (pool.crp) {
+  //   factory.crpCount += 1
+  //   let crp = ConfigurableRightsPool.bind(event.params.caller)
+  //   pool.symbol = getCrpSymbol(crp)
+  //   pool.name = getCrpName(crp)
+  //   pool.crpController = Address.fromString(getCrpController(crp))
+  //   pool.rights = getCrpRights(crp)
+  //   pool.cap = getCrpCap(crp)
+  // }
   pool.controller = event.params.caller
   pool.publicSwap = false
   pool.finalized = false

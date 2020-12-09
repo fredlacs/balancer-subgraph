@@ -73,39 +73,39 @@ export function createPoolShareEntity(id: string, pool: string, user: string): v
 }
 
 export function createPoolTokenEntity(id: string, pool: string, address: string): void {
-  let token = BToken.bind(Address.fromString(address))
-  let tokenBytes = BTokenBytes.bind(Address.fromString(address))
+  // let token = BToken.bind(Address.fromString(address))
+  // let tokenBytes = BTokenBytes.bind(Address.fromString(address))
   let symbol = ''
   let name = ''
   let decimals = 18
 
   // COMMENT THE LINES BELOW OUT FOR LOCAL DEV ON KOVAN
 
-  let symbolCall = token.try_symbol()
-  let nameCall = token.try_name()
-  let decimalCall = token.try_decimals()
+  // let symbolCall = token.try_symbol()
+  // let nameCall = token.try_name()
+  // let decimalCall = token.try_decimals()
 
-  if (symbolCall.reverted) {
-    let symbolBytesCall = tokenBytes.try_symbol()
-    if (!symbolBytesCall.reverted) {
-      symbol = symbolBytesCall.value.toString()
-    }
-  } else {
-    symbol = symbolCall.value
-  }
+  // if (symbolCall.reverted) {
+  //   let symbolBytesCall = tokenBytes.try_symbol()
+  //   if (!symbolBytesCall.reverted) {
+  //     symbol = symbolBytesCall.value.toString()
+  //   }
+  // } else {
+  //   symbol = symbolCall.value
+  // }
 
-  if (nameCall.reverted) {
-    let nameBytesCall = tokenBytes.try_name()
-    if (!nameBytesCall.reverted) {
-      name = nameBytesCall.value.toString()
-    }
-  } else {
-    name = nameCall.value
-  }
+  // if (nameCall.reverted) {
+  //   let nameBytesCall = tokenBytes.try_name()
+  //   if (!nameBytesCall.reverted) {
+  //     name = nameBytesCall.value.toString()
+  //   }
+  // } else {
+  //   name = nameCall.value
+  // }
 
-  if (!decimalCall.reverted) {
-    decimals = decimalCall.value
-  }
+  // if (!decimalCall.reverted) {
+  //   decimals = decimalCall.value
+  // }
 
   // COMMENT THE LINES ABOVE OUT FOR LOCAL DEV ON KOVAN
 
