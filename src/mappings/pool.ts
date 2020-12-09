@@ -1,5 +1,5 @@
 import { BigInt, Address, Bytes, store } from '@graphprotocol/graph-ts'
-import { LOG_CALL, LOG_JOIN, LOG_EXIT, LOG_SWAP, Transfer } from '../types/templates/Pool/Pool'
+import { LOG_CALL, LOG_JOIN, LOG_EXIT, LOG_SWAP, Transfer, GULP_LOG_CALL } from '../types/templates/Pool/Pool'
 import { Pool as BPool } from '../types/templates/Pool/Pool'
 import {
   Balancer,
@@ -149,24 +149,18 @@ export function handleUnbind(event: LOG_CALL): void {
   saveTransaction(event, 'unbind')
 }
 
-export function handleGulp(event: LOG_CALL): void {
+export function handleGulp(event: GULP_LOG_CALL): void {
   let poolId = event.address.toHex()
   let pool = Pool.load(poolId)
 
   // skip func id 4 bytes and address padding 12 bytes
   let address = (event.params.data.subarray(4+12) as Bytes).toHexString()
 
-  let bpool = BPool.bind(Address.fromString(poolId))
-  let balanceCall = bpool.try_getBalance(Address.fromString(address))
-
   let poolTokenId = poolId.concat('-').concat(address)
   let poolToken = PoolToken.load(poolTokenId)
 
   if (poolToken != null) {
-    let balance = ZERO_BD
-    if (!balanceCall.reverted) {
-      balance = bigIntToDecimal(balanceCall.value, poolToken.decimals)
-    }
+    let balance = bigIntToDecimal(event.params.balance, poolToken.decimals)
     poolToken.balance = balance
     poolToken.save()
   }

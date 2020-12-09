@@ -6,14 +6,14 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: ropsten
+    network: arbitrum
     source:
-      address: "0xeb12Ce3D5C1B34baa3e3dF03D61fCBf4A3E45104"
+      address: "0x37a36C4D83934237f91c0a139504A328BD07828E"
       abi: Factory
-      startBlock: 7696706
+      startBlock: 22409591
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       file: ./src/mappings/factory.ts
       entities:
@@ -31,12 +31,12 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: ropsten
+    network: kovan
     source:
       abi: Pool
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       file: ./src/mappings/pool.ts
       entities:
