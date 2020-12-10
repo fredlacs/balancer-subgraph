@@ -1,4 +1,4 @@
-import { BigInt, Address, Bytes, store } from '@graphprotocol/graph-ts'
+import { BigInt, Address, Bytes, store, log } from '@graphprotocol/graph-ts'
 import { LOG_CALL, LOG_JOIN, LOG_EXIT, LOG_SWAP, Transfer, GULP_LOG_CALL } from '../types/templates/Pool/Pool'
 import { Pool as BPool } from '../types/templates/Pool/Pool'
 import {

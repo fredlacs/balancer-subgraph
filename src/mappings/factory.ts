@@ -30,8 +30,8 @@ export function handleNewPool(event: LOG_NEW_POOL): void {
   }
 
   let pool = new Pool(event.params.pool.toHexString())
-  // pool.crp = isCrp(event.params.caller)
-  // pool.rights = []
+  pool.crp = false // isCrp(event.params.caller)
+  pool.rights = []
   // if (pool.crp) {
   //   factory.crpCount += 1
   //   let crp = ConfigurableRightsPool.bind(event.params.caller)

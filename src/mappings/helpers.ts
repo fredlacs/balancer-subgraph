@@ -44,14 +44,6 @@ if (network == 'rinkeby') {
   CRP_FACTORY = '0xA3F9145CB0B50D907930840BB2dcfF4146df8Ab4'
 }
 
-// TODO: update values
-if (network == 'arbitrum') {
-  WETH = '0xA41801A25851A54F05fdA996313536a2b194e104'
-  USD = '0xD6377245D0FCB1707EE81c922983300dD188421E'
-  DAI = '0x091FE03e50E0B071a4Be83aB775f0387b75269eB'
-  CRP_FACTORY = '0xA3F9145CB0B50D907930840BB2dcfF4146df8Ab4'
-}
-
 export function hexToDecimal(hexString: String, decimals: i32): BigDecimal {
   let bytes = Bytes.fromHexString(hexString).reverse() as Bytes
   let bi = BigInt.fromUnsignedBytes(bytes)

@@ -8,9 +8,9 @@ dataSources:
     name: Factory
     network: arbitrum
     source:
-      address: "0x37a36C4D83934237f91c0a139504A328BD07828E"
+      address: "0x47601654c997eA5DF37eD061bcebf8581F9d86ED"
       abi: Factory
-      startBlock: 22409591
+      startBlock: 22519257
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -31,7 +31,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: kovan
+    network: arbitrum
     source:
       abi: Pool
     mapping:
